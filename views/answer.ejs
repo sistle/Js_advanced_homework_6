@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../public/css/style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+	integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">	<title>Document</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<h1 class="title">Поточний курс валют:</h1>
+		<div class="render">
+			<div>
+				<% safe.forEach(function(item){ %>
+					<div class="render__inner">     <span class="first"> 	<%= item.ccy%></span> - <span class="second">
+							<%= item.base_ccy%>
+						</span>   =
+						Купити : <%= item.buy%> , Продати : <%= item.sale%>
+					</div>
+
+					<%});%>
+			</div>
+		</div>
+	</div>
+
+<div class="form-container">
+	<div class="first-window" id="firstwindow">
+		<div class="header">
+			<h1>Введіть суму для обміну </h1>
+		</div>
+		<div class="content">
+			
+			<form method="post"  action="/" >
+
+				<div class="form-wrapper ">
+					<input type="number" id="firstname" name ='data'  placeholder="Введіть суму для обміну"  >
+					
+					<i class="far fa-check-circle"></i>
+					<i class="far fa-times-circle"></i>
+					<small>Error!</small>
+					
+				</div>
+				<input type="submit" class="btn-sign" id="btn"    value="Обміняти" >
+			</form>
+		</div>
+	</div> 
+	<div id="third-window" class="result " >
+		<div class="last"> 
+			<% safe.forEach(function(item){ %>
+				<div class="render__inner">  <%= a%><span class="first"> 
+						<%= item.base_ccy%> </span>  = 
+					
+			  <%= (a/item.buy).toFixed(4)%> <span class="second">  <%= item.ccy%>  </span>
+				</div>
+	
+				<%});%>
+		</div>
+	
+	</div>
+
+</div>
+	<script src="../public/script.js"></script>
+</body>
+
+</html>
